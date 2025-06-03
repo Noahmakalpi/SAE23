@@ -1,6 +1,7 @@
 // Variables globales
 let selectedDays = 1;
 let selectedCommuneData = null; // Pour stocker les données de la commune sélectionnée
+let isDarkMode = false; // État du mode sombre
 
 // Sélection des éléments
 const codePostalInput = document.getElementById("code-postal");
@@ -9,6 +10,51 @@ const validationButton = document.getElementById("validationButton");
 const daySelector = document.getElementById("daySelector");
 const additionalInfoSelector = document.getElementById("additionalInfoSelector");
 const dayButtons = document.querySelectorAll(".day-button");
+const themeToggle = document.getElementById("themeToggle");
+const themeIcon = document.getElementById("themeIcon");
+
+// NOUVEAU : Fonction pour basculer le thème
+function toggleTheme() {
+  isDarkMode = !isDarkMode;
+  document.body.classList.toggle('dark-mode', isDarkMode);
+  
+  // Changer l'icône
+  if (isDarkMode) {
+    themeIcon.className = 'fas fa-sun';
+    themeToggle.setAttribute('aria-label', 'Basculer vers le mode clair');
+  } else {
+    themeIcon.className = 'fas fa-moon';
+    themeToggle.setAttribute('aria-label', 'Basculer vers le mode sombre');
+  }
+  
+  // Sauvegarder la préférence dans le stockage local
+  try {
+    localStorage.setItem('darkMode', isDarkMode);
+  } catch (e) {
+    // Ignorer si localStorage n'est pas disponible
+  }
+}
+
+// NOUVEAU : Charger la préférence de thème au démarrage
+function loadThemePreference() {
+  try {
+    const savedTheme = localStorage.getItem('darkMode');
+    if (savedTheme === 'true') {
+      isDarkMode = true;
+      document.body.classList.add('dark-mode');
+      themeIcon.className = 'fas fa-sun';
+      themeToggle.setAttribute('aria-label', 'Basculer vers le mode clair');
+    }
+  } catch (e) {
+    // Ignorer si localStorage n'est pas disponible
+  }
+}
+
+// Charger le thème au démarrage
+document.addEventListener('DOMContentLoaded', loadThemePreference);
+
+// NOUVEAU : Écouteur d'événement pour le bouton de thème
+themeToggle.addEventListener('click', toggleTheme);
 
 // Gestion des boutons de sélection de jours
 dayButtons.forEach(button => {

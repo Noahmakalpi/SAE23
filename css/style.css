@@ -4,6 +4,48 @@
   --color-font: #ffffff;
   --color-shadow: #0e061c;
   --color-additional: #2a5f87;
+  --color-text-dark: #333333;
+  --color-border: #cccccc;
+}
+
+/* NOUVEAU : Variables pour le mode sombre */
+:root.dark-mode,
+body.dark-mode {
+  --color-primary: #1a1a1a;
+  --color-secondary: #2d4a6b;
+  --color-font: #ffffff;
+  --color-shadow: #000000;
+  --color-additional: #4a7ba7;
+  --color-text-dark: #e0e0e0;
+  --color-border: #444444;
+}
+
+/* NOUVEAU : Bouton de basculement du thème */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background-color: var(--color-secondary);
+  color: var(--color-font);
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-additional);
+  transform: scale(1.1);
+}
+
+.theme-toggle:focus {
+  outline: 2px solid var(--color-font);
+  outline-offset: 2px;
 }
 
 * {
@@ -18,6 +60,8 @@ body {
   background-color: var(--color-primary);
   font-size: 1.25rem;
   font-family: "Roboto", sans-serif;
+  color: var(--color-text-dark);
+  transition: all 0.3s ease;
 }
 
 header {
@@ -96,17 +140,23 @@ h1 {
   color: var(--color-secondary);
 }
 
+#code-postal {
+  margin-top: 10px;
+  padding: 5px;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  background-color: var(--color-primary);
+  color: var(--color-text-dark);
+}
+
 #communeSelect {
   display: none;
   margin-top: 10px;
   padding: 5px;
   z-index: 999;
-}
-
-#code-postal {
-  margin-top: 10px;
-  padding: 5px;
-  border: 1px solid #ccc;
+  background-color: var(--color-primary);
+  color: var(--color-text-dark);
+  border: 1px solid var(--color-border);
   border-radius: 5px;
 }
 
@@ -121,7 +171,11 @@ h1 {
   display: block;
   margin-bottom: 10px;
   font-weight: bold;
-  color: var(--color-secondary);
+  color: var(--color-text-dark);
+}
+
+body.dark-mode #daySelector label {
+  color: var(--color-font);
 }
 
 .day-buttons {
@@ -171,9 +225,13 @@ h1 {
 
 #additionalInfoSelector legend {
   font-weight: bold;
-  color: var(--color-secondary);
+  color: var(--color-text-dark);
   padding: 0 10px;
   font-size: 1rem;
+}
+
+body.dark-mode #additionalInfoSelector legend {
+  color: var(--color-font);
 }
 
 .checkbox-grid {
@@ -199,8 +257,12 @@ h1 {
 .checkbox-item label {
   cursor: pointer;
   font-size: 0.9rem;
-  color: var(--color-secondary);
+  color: var(--color-text-dark);
   user-select: none;
+}
+
+body.dark-mode .checkbox-item label {
+  color: var(--color-font);
 }
 
 .checkbox-item label:hover {
@@ -289,6 +351,33 @@ h1 {
   color: var(--color-secondary);
 }
 
+/* NOUVEAU : Transitions pour un changement de thème fluide */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Mode sombre spécifique pour certains éléments */
+body.dark-mode {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode #cityForm {
+  background-color: var(--color-primary);
+  border-color: var(--color-secondary);
+}
+
+body.dark-mode #additionalInfoSelector {
+  background-color: rgba(45, 74, 107, 0.1);
+}
+
+body.dark-mode #additionalInfoSelector fieldset {
+  border-color: var(--color-secondary);
+}
+
+body.dark-mode .errorMessage {
+  color: #ff6b6b;
+}
+
 /* ------------------- MEDIA QUERIES ----------------------- */
 
 @media screen and (max-width: 1024px) {
@@ -311,6 +400,14 @@ h1 {
   .checkbox-grid {
     grid-template-columns: 1fr;
   }
+  
+  /* Ajustement du bouton de thème sur tablette */
+  .theme-toggle {
+    top: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -330,6 +427,15 @@ h1 {
 
   #additionalInfoSelector fieldset {
     padding: 10px;
+  }
+  
+  /* Ajustement du bouton de thème sur mobile */
+  .theme-toggle {
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
   }
 }
 
