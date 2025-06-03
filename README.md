@@ -1,19 +1,43 @@
-# Instant-Weather
-## Exercice Javascript (V1)
+# 🌤️ Instant Weather
 
-📝Lien du projet : https://princecorg.github.io/Instant-Weather/
+Instant Weather est une application web qui permet d'afficher les prévisions météo d'une commune française à partir de son code postal. Elle utilise l'API de Météo Concept et l'API de Geo.api.gouv.fr.
 
-Cet exercice a pour objectifs de :
+## Fonctionnalités
 
--	Utiliser une API conformément à sa documentation
--	Manipuler le DOM pour intégrer dynamiquement du contenu dans une page HTML
--	Interagir avec la mise en forme de la page Web via l’utilisation de JavaScript
+- Recherche de communes à partir d’un code postal
+- Sélection d’une commune parmi plusieurs résultats
+- Choix du nombre de jours de prévision (1 à 7 jours)
+- Affichage :
+  - Températures minimales et maximales
+  - Probabilité de pluie
+  - Ensoleillement
+- Informations supplémentaires sélectionnables :
+  - Latitude / Longitude
+  - Cumul de pluie
+  - Vitesse et direction du vent
+- Mode clair/sombre
+- Interface responsive avec design moderne
 
-## Les api utilisées :
-- l'API de découpage administratif par commune : https://geo.api.gouv.fr/decoupage-administratif/communes
-- l'API météo de MétéoConcept : https://api.meteo-concept.com/
+## Structure du projet
+````
+InstantWeather/
+├── index.html
+├── css/
+│ └── style.css
+├── js/
+│ ├── app.js
+│ └── weatherCard.js
+├── favicon/
+│ └── favicon.png (optionnel)
+└── README.md
+````
 
-## Les contraintes :
-- La page sera responsive (avec ou sans media queries) et devra passer les validations HTML et CSS du W3C.
-- la page devra satisfaire aux exigences d’accessibilité de la norme WCAG AA 2.0
 
+## API et sites web utilisé
+
+
+geo.api.gouv.fr — géolocalisation par code postal
+
+api.meteo-concept.com — prévisions météo
+
+Projet réalisé par **Grabinski Noah**
