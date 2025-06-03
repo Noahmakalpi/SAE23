@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./favicon/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- FONT Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Kit -->
+    <script
+      src="https://kit.fontawesome.com/0acb75a9e8.js"
+      crossorigin="anonymous"
+    ></script>
+    <script defer src="./js/weatherCard.js"></script>
+    <script defer src="./js/app.js"></script>
+    <title>Instant Weather</title>
+  </head>
+  <body>
+    <header>
+      <h1>INSTANT WEATHER</h1>
+      <p>Votre météo en un clic</p>
+      <p>Choisissez votre commune et consultez les prévisions</p>
+    </header>
+    <main>
+      <section id="cityForm">
+        <form id="cityForm_form" action="dummy">
+          <label for="code-postal">Saisissez un code postal</label>
+          <input
+            type="text"
+            id="code-postal"
+            placeholder="Entrez un code postal..."
+          />
+          <label
+            for="communeSelect"
+            class="sr-only"
+            aria-label="Choix de la commune"
+            >Sélectionnez la commune</label
+          >
+          <select id="communeSelect"></select>
+          
+          <!-- Section de sélection du nombre de jours -->
+          <div id="daySelector">
+            <label for="day-buttons">Nombre de jours de prévision :</label>
+            <div class="day-buttons" id="day-buttons" role="group" aria-label="Sélection du nombre de jours">
+              <button type="button" class="day-button active" data-days="1">1</button>
+              <button type="button" class="day-button" data-days="2">2</button>
+              <button type="button" class="day-button" data-days="3">3</button>
+              <button type="button" class="day-button" data-days="4">4</button>
+              <button type="button" class="day-button" data-days="5">5</button>
+              <button type="button" class="day-button" data-days="6">6</button>
+              <button type="button" class="day-button" data-days="7">7</button>
+            </div>
+          </div>
+
+          <!-- NOUVEAU : Section des informations supplémentaires -->
+          <div id="additionalInfoSelector">
+            <fieldset>
+              <legend>Informations supplémentaires à afficher :</legend>
+              <div class="checkbox-grid">
+                <div class="checkbox-item">
+                  <input type="checkbox" id="latitude" name="additionalInfo" value="latitude">
+                  <label for="latitude">Latitude de la commune</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="longitude" name="additionalInfo" value="longitude">
+                  <label for="longitude">Longitude de la commune</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="rain" name="additionalInfo" value="rain">
+                  <label for="rain">Cumul de pluie (mm)</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="wind-speed" name="additionalInfo" value="windSpeed">
+                  <label for="wind-speed">Vent moyen (km/h)</label>
+                </div>
+                <div class="checkbox-item">
+                  <input type="checkbox" id="wind-direction" name="additionalInfo" value="windDirection">
+                  <label for="wind-direction">Direction du vent (°)</label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </form>
+        <button id="validationButton">Valider</button>
+      </section>
+      <section id="weatherInformation">
+        <!-- Ajouter les informations météo ici -->
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,355 @@
+:root {
+  --color-primary: #f5fcfc;
+  --color-secondary: #0f3359;
+  --color-font: #ffffff;
+  --color-shadow: #0e061c;
+  --color-additional: #2a5f87;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: auto;
+  max-width: 1280px;
+  background-color: var(--color-primary);
+  font-size: 1.25rem;
+  font-family: "Roboto", sans-serif;
+}
+
+header {
+  background-color: var(--color-secondary);
+  margin: 20px auto;
+  width: 80%;
+  border-radius: 15px;
+  padding: 80px 20px;
+  text-align: center;
+  color: var(--color-font);
+}
+
+header p {
+  margin: 20px auto;
+}
+
+h1 {
+  font-size: 6vw;
+}
+
+#cityForm {
+  text-align: center;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-secondary);
+  margin: 20px auto;
+  width: 80%;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+#cityForm_form {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cityForm_form input,
+#cityForm_form select {
+  min-width: 280px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+#validationButton {
+  display: none;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: var(--color-secondary);
+  color: var(--color-font);
+  border: 2px solid var(--color-primary);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.errorMessage {
+  color: red;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#validationButton:hover {
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+#communeSelect {
+  display: none;
+  margin-top: 10px;
+  padding: 5px;
+  z-index: 999;
+}
+
+#code-postal {
+  margin-top: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Styles pour le sélecteur de jours */
+#daySelector {
+  display: none;
+  margin: 15px 0;
+  padding: 10px;
+}
+
+#daySelector label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: var(--color-secondary);
+}
+
+.day-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.day-button {
+  padding: 8px 16px;
+  border: 2px solid var(--color-secondary);
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  min-width: 45px;
+}
+
+.day-button:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-font);
+}
+
+.day-button.active {
+  background-color: var(--color-secondary);
+  color: var(--color-font);
+  font-weight: bold;
+}
+
+/* NOUVEAU : Styles pour les informations supplémentaires */
+#additionalInfoSelector {
+  display: none;
+  margin: 15px 0;
+  padding: 15px;
+  background-color: rgba(15, 51, 89, 0.05);
+  border-radius: 10px;
+}
+
+#additionalInfoSelector fieldset {
+  border: 2px solid var(--color-secondary);
+  border-radius: 8px;
+  padding: 15px;
+}
+
+#additionalInfoSelector legend {
+  font-weight: bold;
+  color: var(--color-secondary);
+  padding: 0 10px;
+  font-size: 1rem;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: var(--color-secondary);
+}
+
+.checkbox-item label {
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--color-secondary);
+  user-select: none;
+}
+
+.checkbox-item label:hover {
+  color: var(--color-additional);
+}
+
+/* Section météo pour multi-jours */
+#weatherInformation {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-secondary);
+  margin: 20px auto;
+  width: 80%;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+/* Cartes pour chaque jour */
+.weather-day {
+  width: 100%;
+  margin: 10px 0;
+  padding: 15px;
+  background-color: var(--color-secondary);
+  color: var(--color-font);
+  border-radius: 12px;
+}
+
+.weather-day h3 {
+  text-align: center;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.weather-day-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.weather-info {
+  text-align: center;
+  flex: 1;
+  min-width: 200px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+/* NOUVEAU : Style spécial pour les informations supplémentaires */
+.weather-info.additional-info {
+  background-color: var(--color-additional);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Ancien style (pour compatibilité avec version 1 jour) */
+#weatherInformation div:not(.weather-day):not(.weather-info) {
+  text-align: center;
+  min-height: 60px;
+  margin: 10px 5px;
+  padding: 5px;
+  background-color: var(--color-secondary);
+  color: var(--color-font);
+  border: 2px solid var(--color-secondary);
+  border-radius: 8px;
+}
+
+.reloadButton {
+  width: 280px;
+  margin: 20px auto;
+  padding: 10px 20px;
+  text-align: center;
+  background-color: var(--color-secondary);
+  color: var(--color-font);
+  border: 2px solid var(--color-primary);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reloadButton:hover {
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-secondary);
+  color: var(--color-secondary);
+}
+
+/* ------------------- MEDIA QUERIES ----------------------- */
+
+@media screen and (max-width: 1024px) {
+  #weatherInformation {
+    flex-wrap: wrap;
+  }
+
+  #weatherInformation div:not(.weather-day):not(.weather-info) {
+    width: 98%;
+  }
+  
+  .weather-day-content {
+    flex-direction: column;
+  }
+
+  .weather-info {
+    min-width: 90%;
+  }
+
+  .checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #cityForm {
+    width: 95%;
+    margin: 8px auto;
+  }
+
+  .checkbox-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  #additionalInfoSelector {
+    padding: 10px;
+  }
+
+  #additionalInfoSelector fieldset {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .day-buttons {
+    gap: 5px;
+  }
+
+  .day-button {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    min-width: 40px;
+  }
+
+  .checkbox-item {
+    font-size: 0.85rem;
+  }
+
+  .checkbox-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+  }
+}
